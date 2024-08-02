@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Tester {
@@ -62,8 +65,70 @@ public class Tester {
     }
 
     public static void test(String chaine) {
-        chaine += chaine;
+       // chaine += chaine;
+        chaine.concat(chaine);
     }
+
+    public static String inverserTexte(String texte) {
+
+        String texteRenverse = new String();
+
+        // Utilisation d'une boucle itérative, à voir dans le prochain module.
+        for (char c : texte.toCharArray()) {
+            texteRenverse = c + texteRenverse;
+        }
+
+        return texteRenverse;
+
+    }
+
+    public static String transformerTexteEnHTML(String texte) {
+
+       return  texte =  "<html><body><p>" + texte + "</p></body></html>";
+
+    }
+
+    public static String fusionDeTexte(String texte1, String texte2, String monde) {
+
+        return texte1 + "::" + texte2;
+
+
+    }
+/************************************************************************************************/
+// Travail noté 30
+    public static void calculerSomme1a10000Inclusivement() {
+        int somme = 0;
+        for (int i = 1; i <= 10000; i++) {
+            if (!aExclure(i)) {
+                somme+=i;
+            }
+        }
+        System.out.println("La somme des nombres de 1 jusqu’à 10,000 est : " + somme);
+    }
+
+    public static boolean aExclure(int number) {
+        return (number / 100) % 10 == 2
+                || (number / 100) % 10 == 3
+                || number % 3 == 0;
+    }
+
+
+
+    private static boolean isValidString(String str) {
+        // Check if 'b' is always followed by 'a'
+        if (str.contains("b") && !str.contains("ba")) {
+            return false;
+        }
+        // Check if 'd' and 'a' do not appear in the same string
+        if (str.contains("d") && str.contains("a")) {
+            return false;
+        }
+        return true;
+    }
+
+
+
+    /************************************************************************************************/
 
 
 }

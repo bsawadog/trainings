@@ -1,18 +1,30 @@
 public class Cercle {
+
     public double rayon;
+    public boolean erreurMessage = false;
 
     public Cercle(double rayon) {
-        this.rayon = rayon;
+        validerRayon(rayon);
     }
 
-    public double aire(){
-        return this.rayon * this.rayon * Math.PI;
+    public String aire(){
+         double aire = Math.PI * Math.pow(this.rayon, 2);
+         return erreurMessage?"Impossible de calculer l'aire car le rayon est invalide":Double.toString(aire);
     }
 
-    public double perimetre(){
-        return this.rayon * 2 * Math.PI;
+    public String perimetre(){
+        double perimetre = this.rayon * 2 * Math.PI;
+        return erreurMessage?"Impossible de calculer le périmetre car le rayon est invalide":Double.toString(perimetre);
     }
 
+    public void validerRayon(double rayon){
+        if (rayon>0) {
+            this.rayon = rayon;
+        } else {
+            System.out.println("Erreur : Pour créer un cercle, le rayon doit être supérieur à 0");
+            this.erreurMessage = true;
+        }
+    }
 }
 
 /**
